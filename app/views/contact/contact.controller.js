@@ -8,9 +8,28 @@
 * Controller of the furtherApp
 */
 angular.module('furtherApp')
-.controller('ContactCtrl', function () {
+.controller('ContactCtrl', function ($scope, $http) {
 
-  console.log("in contact controller"); 
+
+  var vm = this;
+
+  vm.getTopDestinations = function(){
+
+    console.log('in top Ds');
+
+  }
+
+
+  // $http({
+  //   method : "GET",
+  //   url : "welcome.htm"
+  // }).then(function mySuccess(response) {
+  //   $scope.myWelcome = response.data;
+  // }, function myError(response) {
+  //   $scope.myWelcome = response.statusText;
+  // });
+
+  console.log("in contact controller");
 
   this.awesomeThings = [
     'HTML5 Boilerplate',
