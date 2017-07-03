@@ -36,4 +36,8 @@ angular.module('furtherApp')
 
   }
 
+  vm.getFlightToDestinations = function(dest){
+    console.log('get flight to: ', dest);
+  }
+
 });
