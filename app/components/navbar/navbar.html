@@ -1,26 +1,55 @@
-<div class="header">
-  <div class="navbar navbar-default" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
+<!-- <div class="header">
+<div class="navbar navbar-default" role="navigation">
+<div class="container">
+<div class="navbar-header">
 
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
 
-        <a class="navbar-brand" href="#/">further</a>
-      </div>
-
-      <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
-        <ul class="nav navbar-nav">
-          <li><a href="/">Home</a></li>
-          <li><a ng-href="#/about">About</a></li>
-          <li><a ng-href="#/contact">Top Destinations</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
+<a class="navbar-brand" href="#/">further</a>
 </div>
+
+<div class="collapse navbar-collapse" id="js-navbar-collapse">
+
+<ul class="nav navbar-nav">
+<li><a href="/">Home</a></li>
+<li><a ng-href="#/about">About</a></li>
+<li><a ng-href="#/contact">Top Destinations</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div> -->
+
+<md-content class="md-padding">
+	<md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+		<md-nav-item md-nav-click="vm.goto('home')" name="home">
+			Home
+		</md-nav-item>
+		<md-nav-item md-nav-click="vm.goto('top destinations')" name="top destinations">
+			Top Destinations
+		</md-nav-item>
+		<md-nav-item md-nav-click="vm.goto('flights')" name="flights">
+			Flights
+		</md-nav-item>
+		<!-- these require actual routing with ui-router or ng-route, so they
+	won't work in the demo
+	<md-nav-item md-nav-href="#page4" name="page5">Page Four</md-nav-item>
+	<md-nav-item md-nav-sref="app.page5" name="page4">Page Five</md-nav-item>
+	You can also add options for the <code>ui-sref-opts</code> attribute.
+	<md-nav-item md-nav-sref="page6" sref-opts="{reload:true, notify:true}">
+	Page Six
+</md-nav-item>
+-->
+	</md-nav-bar>
+	<!-- <div class="ext-content">
+		External content for `<span>{{currentNavItem}}</span>`.
+	</div> -->
+
+	<!-- <md-checkbox ng-model="disableInkBar">Disable Ink Bar</md-checkbox> -->
+
+</md-content>

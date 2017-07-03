@@ -2,8 +2,8 @@
 	'use strict';
 
 	angular
-	.module('furtherApp')
-	.directive('furtherNavbar', furtherNavbar);
+		.module('furtherApp')
+		.directive('furtherNavbar', furtherNavbar);
 
 	function furtherNavbar() {
 
@@ -17,10 +17,24 @@
 
 		return directive;
 
-		function NavbarController() {
+		function NavbarController($location) {
 			var vm = this;
 
-			//action here
+			vm.goto = function(page) {
+				switch (page) {
+					case 'home':
+						$location.path('home');
+						break;
+					case 'top destinations':
+						$location.path('top-destinations');
+						break;
+					case 'flights':
+						$location.path('flights');
+						break;
+					default:
+						$location.path('home');
+				}
+			}
 
 		}
 	}

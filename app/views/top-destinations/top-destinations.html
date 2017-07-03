@@ -1,0 +1,72 @@
+<div ng-controller="TopDestinationsCtrl as vm">
+
+	<div class="jumbotron">
+		<!-- <h1>contact</h1>
+		<p class="lead">
+		<img src="images/yeoman.png" alt="I'm Yeoman"><br>
+		Always a pleasure scaffolding your apps.
+	</p> -->
+		<p><a class="btn btn-lg btn-success" ng-click="vm.getTopDestinations()">Top Destinations <span class="glyphicon glyphicon-ok"></span></a></p>
+	</div>
+
+	<div class="row marketing">
+
+	</div>
+
+	<div class="container">
+
+		<div class="row">
+
+			<md-card-content>
+				<div layout="row" layout-align="space-between center">
+					<span>Where are you flying out of?</span>
+					<md-select ng-model="vm.departureLocation" placeholder="Airport" class="md-no-underline">
+						<div ng-repeat="airport in vm.airports">
+							<md-option value="{{airport}}">{{airport}}</md-option>
+						</div>
+					</md-select>
+				</div>
+
+				<div layout="row" layout-align="space-between center">
+					<span>Where do you want to go?</span>
+					<md-select ng-model="vm.arrivalLocation" placeholder="Region" class="md-no-underline" required md-no-asterisk="false">
+						<div ng-repeat="region in vm.regions">
+							<md-option value="{{region}}">{{region}}</md-option>
+						</div>
+					</md-select>
+				</div>
+			</md-card-content>
+			</md-card>
+
+		</div>
+
+		<div ng-show="vm.loadingTopDestinations" class="container" ng-class="{'visible' : !vm.activated}">
+			<md-progress-linear md-mode="query" ng-disabled="!vm.loadingTopDestinations"></md-progress-linear>
+			<div class="bottom-block">
+				<span>Loading Top Destinations...</span>
+			</div>
+		</div>
+
+		<div>
+			<table class="table" ng-show="vm.isDestinations()">
+				<thead>
+					<tr>
+						<th>Rank</th>
+						<th>Destination</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="dest in vm.topDestinations">
+						<th scope="row">{{dest.rank}}</th>
+						<td>{{dest.destination.cityName}}</td>
+						<td>
+							<a class="btn btn-success" ng-click="vm.getFlightToDestinations(dest.destination.airportName)"><span class="glyphicon glyphicon-ok"></span></a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+
+	</div>

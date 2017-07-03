@@ -8,7 +8,7 @@
  * Controller of the furtherApp
  */
 angular.module('furtherApp')
-	.controller('ContactCtrl', function($http) {
+	.controller('TopDestinationsCtrl', function($http) {
 
 
 		var vm = this;

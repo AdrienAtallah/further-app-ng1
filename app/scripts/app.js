@@ -26,15 +26,15 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
     })
-    .when('/about', {
-        templateUrl: 'views/about/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+    .when('/top-destinations', {
+        templateUrl: 'views/top-destinations/top-destinations.html',
+        controller: 'TopDestinationsCtrl',
+        controllerAs: 'topDestinations'
     })
-    .when('/contact', {
-        templateUrl: 'views/contact/contact.html',
-        controller: 'ContactCtrl',
-        controllerAs: 'contact'
+    .when('/flights', {
+        templateUrl: 'views/flights/flights.html',
+        controller: 'AboutCtrl',
+        controllerAs: 'flights'
     })
     .otherwise({
         redirectTo: '/'
