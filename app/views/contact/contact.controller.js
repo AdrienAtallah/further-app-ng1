@@ -14,14 +14,27 @@ angular.module('furtherApp')
   var vm = this;
 
   vm.topDestinations = [];
+  vm.departureLocation = '';
+  vm.arrivalLocation = '';
 
+  vm.airports = ['LAX', 'NYC', 'CHI'];
 
   var url = 'http://ea0856a7.ngrok.io/further-service/v1/user/save';
-  var url2 = 'http://ea0856a7.ngrok.io/further-service/v1/top/destinations/LAX?region=Africa';
+
+  vm.setDepartureLocation =  function (airport){
+    console.log("airport " + airport);
+    vm.departureLocation = airport;
+  }
+
+  vm.setArrivalLocation =  function (region){
+    console.log("region " + region);
+    vm.arrivalLocation = region;
+  }
 
   vm.getTopDestinations = function(){
 
-    console.log('in top Ds');
+    console.log('in top Ds ' + vm.departureLocation + " : " + vm.arrivalLocation);
+    var url2 = 'http://ea0856a7.ngrok.io/further-service/v1/top/destinations/'+ vm.departureLocation + '?region=' + vm.arrivalLocation;
 
     $http({
       method : "GET",
@@ -38,6 +51,12 @@ angular.module('furtherApp')
 
   vm.getFlightToDestinations = function(dest){
     console.log('get flight to: ', dest);
+  }
+
+  vm.isDestinations = function (){
+    if (vm.topDestinations.length > 1)
+    return true;
+    else return false;
   }
 
 });

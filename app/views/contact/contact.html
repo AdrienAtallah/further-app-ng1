@@ -6,7 +6,7 @@
     <img src="images/yeoman.png" alt="I'm Yeoman"><br>
     Always a pleasure scaffolding your apps.
   </p> -->
-  <p><a class="btn btn-lg btn-success" ng-click="vm.getTopDestinations()">Top Destinations<span class="glyphicon glyphicon-ok"></span></a></p>
+  <p><a class="btn btn-lg btn-success" ng-click="vm.getTopDestinations()">Top Destinations <span class="glyphicon glyphicon-ok"></span></a></p>
 </div>
 
 <div class="row marketing">
@@ -16,39 +16,76 @@
 
 <div class="container">
 
-  <div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" type="button" dropdown-toggle ng-disabled="disabled">Airport
-      <span class="caret"></span></button>
-      <ul class="dropdown-menu">
-        <li><a href="#">HTML</a>asdf</li>
-        <li><a href="#">CSS</a>asdf</li>
-        <li><a href="#">JavaScript</a>asdf</li>
+  <div class="row">
+    <div class="btn-group col-sm-4" uib-dropdown>
+      <button id="split-button" type="button" class="btn btn-primary">Airport</button>
+      <button type="button" class="btn btn-primary" uib-dropdown-toggle>
+        <span class="caret"></span>
+        <!-- <span class="sr-only">Split button!</span> -->
+      </button>
+      <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button" ng-repeat='airport in vm.airports'>
+        <li role="menuitem">{{airport}}
+          <a class="btn btn-info" ng-click="vm.setDepartureLocation(airport)">
+            <span class="glyphicon"></span>
+          </a>
+        </li>
+
+        <!-- <li role="menuitem"><a ng-click="vm.setDepartureLocation('NYC')">NYC</a></li>
+        <li role="menuitem"><a ng-click="vm.setDepartureLocation('CHI')">CHI</a></li>
+        <li role="menuitem"><a ng-click="vm.setDepartureLocation('DFW')">DFW</a></li> -->
+        <!-- <li role="menuitem"><a href="#">Another action</a></li>
+        <li role="menuitem"><a href="#">Something else here</a></li>
+        <li class="divider"></li>
+        <li role="menuitem"><a href="#">Separated link</a></li> -->
       </ul>
     </div>
 
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Rank</th>
-          <th>Destination</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="dest in vm.topDestinations">
-          <th scope="row">{{dest.rank}}</th>
-          <td>{{dest.destination.cityName}}</td>
-          <td>
-            <!-- <a class="blue-text">sdfsd<i class="fa fa-user"></i></a> -->
-            <a class="btn btn-success" ng-click="vm.getFlightToDestinations(dest.destination.airportName)"><span class="glyphicon glyphicon-ok"></span></a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div col-sm-4>
+    </div>
 
-    <ul class="list-group" ng-repeat="dest in vm.topDestinations">
-      <li class="list-group-item">{{dest.destination.cityName}}<span class="badge">{{dest.rank}}</span></li>
-    </ul>
+    <div class="btn-group col-sm-4" uib-dropdown>
+      <button id="split-button" type="button" class="btn btn-primary">Desired Region</button>
+      <button type="button" class="btn btn-primary" uib-dropdown-toggle>
+        <span class="caret"></span>
+        <!-- <span class="sr-only">Split button!</span> -->
+      </button>
+      <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
+        <li role="menuitem"><a ng-click="vm.setArrivalLocation('Africa')">Africa</a></li>
+        <li role="menuitem"><a ng-click="vm.setArrivalLocation('Asia Pacific')">Asia Pacific</a></li>
+        <li role="menuitem"><a ng-click="vm.setArrivalLocation('Latin America')">Latin America</a></li>
+        <li role="menuitem"><a ng-click="vm.setArrivalLocation('Middle East')">Middle East</a></li>
+        <li role="menuitem"><a ng-click="vm.setArrivalLocation('North America')">North America</a></li>
+        <!-- <li role="menuitem"><a href="#">Another action</a></li>
+        <li role="menuitem"><a href="#">Something else here</a></li>
+        <li class="divider"></li>
+        <li role="menuitem"><a href="#">Separated link</a></li> -->
+      </ul>
+    </div>
   </div>
+
+  <table class="table" ng-show="vm.isDestinations()">
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>Destination</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="dest in vm.topDestinations">
+        <th scope="row">{{dest.rank}}</th>
+        <td>{{dest.destination.cityName}}</td>
+        <td>
+          <!-- <a class="blue-text">sdfsd<i class="fa fa-user"></i></a> -->
+          <a class="btn btn-success" ng-click="vm.getFlightToDestinations(dest.destination.airportName)"><span class="glyphicon glyphicon-ok"></span></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ul class="list-group" ng-repeat="dest in vm.topDestinations">
+    <li class="list-group-item">{{dest.destination.cityName}}<span class="badge">{{dest.rank}}</span></li>
+  </ul>
+</div>
 
 </div>
