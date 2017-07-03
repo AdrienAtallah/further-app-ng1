@@ -11,33 +11,44 @@
 
 <div class="row marketing">
 
+
 </div>
 
 <div class="container">
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Rank</th>
-        <th>Destination</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="dest in vm.topDestinations">
-        <th scope="row">{{dest.rank}}</th>
-        <td>{{dest.destination.cityName}}</td>
-        <td>
-          <!-- <a class="blue-text">sdfsd<i class="fa fa-user"></i></a> -->
-          <a class="btn btn-success" ng-click="vm.getFlightToDestinations(dest.destination.airportName)"><span class="glyphicon glyphicon-ok"></span></a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" dropdown-toggle ng-disabled="disabled">Airport
+      <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a href="#">HTML</a>asdf</li>
+        <li><a href="#">CSS</a>asdf</li>
+        <li><a href="#">JavaScript</a>asdf</li>
+      </ul>
+    </div>
 
-  <ul class="list-group" ng-repeat="dest in vm.topDestinations">
-    <li class="list-group-item">{{dest.destination.cityName}}<span class="badge">{{dest.rank}}</span></li>
-  </ul>
-</div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Destination</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="dest in vm.topDestinations">
+          <th scope="row">{{dest.rank}}</th>
+          <td>{{dest.destination.cityName}}</td>
+          <td>
+            <!-- <a class="blue-text">sdfsd<i class="fa fa-user"></i></a> -->
+            <a class="btn btn-success" ng-click="vm.getFlightToDestinations(dest.destination.airportName)"><span class="glyphicon glyphicon-ok"></span></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ul class="list-group" ng-repeat="dest in vm.topDestinations">
+      <li class="list-group-item">{{dest.destination.cityName}}<span class="badge">{{dest.rank}}</span></li>
+    </ul>
+  </div>
 
 </div>
