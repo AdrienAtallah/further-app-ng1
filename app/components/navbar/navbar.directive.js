@@ -1,17 +1,15 @@
 (function() {
 	'use strict';
 
-	angular.module('furtherApp')
-		.directive('navbar', navbar);
+	angular
+	.module('furtherApp')
+	.directive('furtherNavbar', furtherNavbar);
 
-	function navbar() {
+	function furtherNavbar() {
 
 		var directive = {
 			restrict: 'E',
-			templateUrl: 'app/components/navbar.directive.js',
-			scope:{
-				menuItems: '='
-			},
+			templateUrl: 'components/navbar/navbar.html',
 			controller: NavbarController,
 			controllerAs: 'vm',
 			bindToController: true
@@ -27,4 +25,4 @@
 		}
 	}
 
-}());
+})();
