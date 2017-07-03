@@ -8,7 +8,7 @@
  * Controller of the furtherApp
  */
 angular.module('furtherApp')
-	.controller('TopDestinationsCtrl', function($http) {
+	.controller('TopDestinationsCtrl', function($http, api) {
 
 
 		var vm = this;
@@ -30,24 +30,26 @@ angular.module('furtherApp')
 			console.log('in top Ds ' + vm.departureLocation + " : " + vm.arrivalLocation);
 			var url2 = 'http://ea0856a7.ngrok.io/further-service/v1/top/destinations/' + vm.departureLocation + '?region=' + vm.arrivalLocation;
 
-			$http({
-				method: "GET",
-				url: url2
-			}).then(function mySuccess(response) {
+			api.getTopDestinations(vm.departureLocation, vm.arrivalLocation);
 
-				vm.topDestinations = response.data.destinations;
-
-				vm.topDestinations = vm.topDestinations.filter(function(element) {
-					console.log('element', element);
-					return (element.destination.cityName !== null);
-				});
-
-				vm.loadingTopDestinations = false;
-
-			}, function myError(response) {
-				vm.loadingTopDestinations = false;
-				console.log(response.statusText);
-			});
+			// $http({
+			// 	method: "GET",
+			// 	url: url2
+			// }).then(function mySuccess(response) {
+			//
+			// 	vm.topDestinations = response.data.destinations;
+			//
+			// 	vm.topDestinations = vm.topDestinations.filter(function(element) {
+			// 		console.log('element', element);
+			// 		return (element.destination.cityName !== null);
+			// 	});
+			//
+			// 	vm.loadingTopDestinations = false;
+			//
+			// }, function myError(response) {
+			// 	vm.loadingTopDestinations = false;
+			// 	console.log(response.statusText);
+			// });
 
 		}
 

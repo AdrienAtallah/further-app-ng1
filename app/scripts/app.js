@@ -8,6 +8,14 @@
 *
 * Main module of the application.
 */
+
+var env = {};
+
+// Import variables if present (from env.js)
+if(window){
+  Object.assign(env, window.__env);
+}
+
 angular
 .module('furtherApp', [
     'ngAnimate',
@@ -19,6 +27,7 @@ angular
     'ui.bootstrap',
     'ngMaterial'
 ])
+.constant('__env', env)
 .config(function ($routeProvider, $locationProvider) {
     $routeProvider
     .when('/', {
