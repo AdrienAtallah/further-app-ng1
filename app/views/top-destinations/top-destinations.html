@@ -20,7 +20,7 @@
 			<md-card-content>
 				<div layout="row" layout-align="space-between center">
 					<span>Where are you flying out of?</span>
-					<md-select ng-model="vm.departureLocation" placeholder="Airport" class="md-no-underline">
+					<md-select ng-model="vm.departureLocation" placeholder="Airport" class="md-no-underline" required md-no-asterisk="false">
 						<div ng-repeat="airport in vm.airports">
 							<md-option value="{{airport}}">{{airport}}</md-option>
 						</div>
