@@ -17,9 +17,11 @@ angular.module('furtherApp')
   vm.departureLocation = '';
   vm.arrivalLocation = '';
 
-  vm.airports = ['LAX', 'NYC', 'CHI'];
+  vm.airports = ["LAX", "NYC", "CHI"];
 
   var url = 'http://ea0856a7.ngrok.io/further-service/v1/user/save';
+
+  console.log(vm.airports);
 
   vm.setDepartureLocation =  function (airport){
     console.log("airport " + airport);
@@ -42,6 +44,11 @@ angular.module('furtherApp')
     }).then(function mySuccess(response) {
 
       vm.topDestinations = response.data.destinations;
+
+      vm.topDestinations = vm.topDestinations.filter(function( element ) {
+        console.log('element', element);
+        return (element.destination.cityName !== null);
+      });
 
     }, function myError(response) {
       console.log(response.statusText);

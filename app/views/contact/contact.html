@@ -17,18 +17,19 @@
 <div class="container">
 
   <div class="row">
-    <div class="btn-group col-sm-4" uib-dropdown>
+    <!-- <div class="btn-group col-xs-4" uib-dropdown>
       <button id="split-button" type="button" class="btn btn-primary">Airport</button>
       <button type="button" class="btn btn-primary" uib-dropdown-toggle>
-        <span class="caret"></span>
+        <span class="caret"></span> -->
         <!-- <span class="sr-only">Split button!</span> -->
-      </button>
-      <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button" ng-repeat='airport in vm.airports'>
-        <li role="menuitem">{{airport}}
-          <a class="btn btn-info" ng-click="vm.setDepartureLocation(airport)">
-            <span class="glyphicon"></span>
-          </a>
-        </li>
+      <!-- </button>
+      <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button" ng-repeat="airport in vm.airports track by $index"> -->
+        <!-- <a class="btn btn-info"> -->
+          <!-- <li role="menuitem">
+            {{airport}} -->
+            <!-- <span class="glyphicon" ng-click="vm.setDepartureLocation(airport)"></span> -->
+          <!-- </li> -->
+        <!-- </a> -->
 
         <!-- <li role="menuitem"><a ng-click="vm.setDepartureLocation('NYC')">NYC</a></li>
         <li role="menuitem"><a ng-click="vm.setDepartureLocation('CHI')">CHI</a></li>
@@ -37,13 +38,19 @@
         <li role="menuitem"><a href="#">Something else here</a></li>
         <li class="divider"></li>
         <li role="menuitem"><a href="#">Separated link</a></li> -->
-      </ul>
+      <!-- </ul> -->
+<!--  -->
+<!--  -->
+
     </div>
 
-    <div col-sm-4>
+    <div col-xs-4>
+      <!-- <ul class="list-group" ng-repeat="airport in vm.airports">
+        <li class="list-group-item">{{airport}}<span class="badge">{{airport}}</span></li>
+      </ul> -->
     </div>
 
-    <div class="btn-group col-sm-4" uib-dropdown>
+    <div class="btn-group col-xs-4" uib-dropdown>
       <button id="split-button" type="button" class="btn btn-primary">Desired Region</button>
       <button type="button" class="btn btn-primary" uib-dropdown-toggle>
         <span class="caret"></span>
