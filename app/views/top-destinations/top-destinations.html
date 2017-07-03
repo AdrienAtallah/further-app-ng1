@@ -17,7 +17,7 @@
 
 		<div class="row">
 
-			<md-card-content>
+			<md-card-content ng-show="!vm.isDestinations()">
 				<div layout="row" layout-align="space-between center">
 					<span>Where are you flying out of?</span>
 					<md-select ng-model="vm.departureLocation" placeholder="Airport" class="md-no-underline" required md-no-asterisk="false">
@@ -40,7 +40,7 @@
 
 		</div>
 
-		<div ng-show="vm.loadingTopDestinations" class="container" ng-class="{'visible' : !vm.activated}">
+		<div ng-show="vm.loadingTopDestinations" class="container jumbotron" ng-class="{'visible' : !vm.activated}">
 			<md-progress-linear md-mode="query" ng-disabled="!vm.loadingTopDestinations"></md-progress-linear>
 			<div class="bottom-block">
 				<span>Loading Top Destinations...</span>
