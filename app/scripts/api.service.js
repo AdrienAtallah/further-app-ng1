@@ -5,31 +5,23 @@
 		.module('furtherApp')
 		.service('api', apiService);
 
-	function apiService($http) {
+	function apiService($http, $q) {
 
 		apiService.$inject = ['__env'];
 
 		function _get(__service) {
+			var _deferred = $q.defer();
+
 			$http({
 				method: "GET",
 				url: __env.apiUrl + __service
-			}).then(function mySuccess(response) {
+			}).then(function (__data) {
+				if (__data)
+					_deferred.resolve(__data.data)
 
-				console.log("In service : ", respone.data);
-
-				vm.topDestinations = response.data.destinations;
-
-				vm.topDestinations = vm.topDestinations.filter(function(element) {
-					console.log('element', element);
-					return (element.destination.cityName !== null);
-				});
-
-				vm.loadingTopDestinations = false;
-
-			}, function myError(response) {
-				vm.loadingTopDestinations = false;
-				console.log(response.statusText);
+				console.log("In service : ", __data.data);
 			});
+			return _deferred.promise;
 		}
 
 		var publicApi = {
