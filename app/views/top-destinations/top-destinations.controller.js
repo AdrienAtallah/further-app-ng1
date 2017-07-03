@@ -21,8 +21,6 @@ angular.module('furtherApp')
 		vm.airports = ["LAX", "NYC", "CHI"];
 		vm.regions = ["Asia Pacific", "Latin America", "Africa", "Middle East", "North America"];
 
-		var url = 'http://ea0856a7.ngrok.io/further-service/v1/user/save';
-
 		vm.getTopDestinations = function() {
 
 			vm.loadingTopDestinations = true;
@@ -30,26 +28,20 @@ angular.module('furtherApp')
 			console.log('in top Ds ' + vm.departureLocation + " : " + vm.arrivalLocation);
 			var url2 = 'http://ea0856a7.ngrok.io/further-service/v1/top/destinations/' + vm.departureLocation + '?region=' + vm.arrivalLocation;
 
-			api.getTopDestinations(vm.departureLocation, vm.arrivalLocation);
+			api.getTopDestinations(vm.departureLocation, vm.arrivalLocation).then(function mySuccess(response) {
 
-			// $http({
-			// 	method: "GET",
-			// 	url: url2
-			// }).then(function mySuccess(response) {
-			//
-			// 	vm.topDestinations = response.data.destinations;
-			//
-			// 	vm.topDestinations = vm.topDestinations.filter(function(element) {
-			// 		console.log('element', element);
-			// 		return (element.destination.cityName !== null);
-			// 	});
-			//
-			// 	vm.loadingTopDestinations = false;
-			//
-			// }, function myError(response) {
-			// 	vm.loadingTopDestinations = false;
-			// 	console.log(response.statusText);
-			// });
+				vm.topDestinations = response.destinations;
+
+				vm.topDestinations = vm.topDestinations.filter(function(element) {
+					return (element.destination.cityName !== null);
+				});
+
+				vm.loadingTopDestinations = false;
+
+			}, function myError(response) {
+				vm.loadingTopDestinations = false;
+				console.log(response.statusText);
+			});
 
 		}
 
