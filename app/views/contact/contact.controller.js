@@ -16,6 +16,7 @@ angular.module('furtherApp')
   vm.topDestinations = [];
   vm.departureLocation = '';
   vm.arrivalLocation = '';
+  vm.loadingTopDestinations = false;
 
   vm.airports = ["LAX", "NYC", "CHI"];
 
@@ -35,6 +36,8 @@ angular.module('furtherApp')
 
   vm.getTopDestinations = function(){
 
+    vm.loadingTopDestinations = true;
+
     console.log('in top Ds ' + vm.departureLocation + " : " + vm.arrivalLocation);
     var url2 = 'http://ea0856a7.ngrok.io/further-service/v1/top/destinations/'+ vm.departureLocation + '?region=' + vm.arrivalLocation;
 
@@ -49,6 +52,8 @@ angular.module('furtherApp')
         console.log('element', element);
         return (element.destination.cityName !== null);
       });
+
+      vm.loadingTopDestinations = false;
 
     }, function myError(response) {
       console.log(response.statusText);
