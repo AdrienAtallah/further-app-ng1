@@ -35,6 +35,11 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
     })
+    .when('/login', {
+        templateUrl: 'views/login/login.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'login'
+    })
     .when('/top-destinations', {
         templateUrl: 'views/top-destinations/top-destinations.html',
         controller: 'TopDestinationsCtrl',

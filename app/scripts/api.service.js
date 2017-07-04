@@ -19,7 +19,6 @@
 				if (__data)
 					_deferred.resolve(__data.data)
 
-				console.log("In service : ", __data.data);
 			});
 			return _deferred.promise;
 		}

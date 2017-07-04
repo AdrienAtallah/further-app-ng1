@@ -25,9 +25,6 @@ angular.module('furtherApp')
 
 			vm.loadingTopDestinations = true;
 
-			console.log('in top Ds ' + vm.departureLocation + " : " + vm.arrivalLocation);
-			var url2 = 'http://ea0856a7.ngrok.io/further-service/v1/top/destinations/' + vm.departureLocation + '?region=' + vm.arrivalLocation;
-
 			api.getTopDestinations(vm.departureLocation, vm.arrivalLocation).then(function mySuccess(response) {
 
 				vm.topDestinations = response.destinations;
