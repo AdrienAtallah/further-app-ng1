@@ -8,7 +8,7 @@
  * Controller of the furtherApp
  */
 angular.module('furtherApp')
-  .controller('LoginCtrl', function($q, $http) {
+  .controller('LoginCtrl', function($q, $http, dataService) {
 
     var vm = this;
     vm.currentLocation = {};
@@ -21,7 +21,10 @@ angular.module('furtherApp')
       console.log("vm.currentLocation ", vm.currentLocation);
       console.log("vm.currentLocation.city ", vm.currentLocation.city);
       console.log("vm.currentLocation.lat ", vm.currentLocation.lat);
+      dataService.setLat(vm.currentLocation.lat);
+      
       console.log("vm.currentLocation.lon ", vm.currentLocation.lon);
+      dataService.setLon(vm.currentLocation.lon);
 
       }, function myError(response) {
         vm.loadingTopDestinations = false;
