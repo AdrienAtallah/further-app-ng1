@@ -47,7 +47,7 @@ angular
     })
     .when('/flights', {
         templateUrl: 'views/flights/flights.html',
-        controller: 'AboutCtrl',
+        controller: 'FlightsCtrl',
         controllerAs: 'flights'
     })
     .otherwise({
