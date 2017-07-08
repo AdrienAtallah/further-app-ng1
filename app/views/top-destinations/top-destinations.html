@@ -7,6 +7,7 @@
 		Always a pleasure scaffolding your apps.
 	</p> -->
 		<p><a class="btn btn-lg btn-success" ng-click="vm.getTopDestinations()">Top Destinations <span class="glyphicon glyphicon-ok"></span></a></p>
+		<p><a class="btn btn-lg btn-success" ng-click="vm.getAirports()">Get Airports <span class="glyphicon glyphicon-ok"></span></a></p>
 	</div>
 
 	<div class="row marketing">
@@ -21,7 +22,7 @@
 				<div layout="row" layout-align="space-between center">
 					<span>Where are you flying out of?</span>
 					<md-select ng-model="vm.departureLocation" placeholder="Airport" class="md-no-underline" required md-no-asterisk="false">
-						<div ng-repeat="airport in vm.airports">
+						<div ng-repeat="airport in vm.airports track by $index">
 							<md-option value="{{airport}}">{{airport}}</md-option>
 						</div>
 					</md-select>

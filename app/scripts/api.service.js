@@ -29,6 +29,10 @@
 			},
 			getFlights: function (__departure, __arrival) {
 				return _get('top/destinations/' + __departure + '?region=' + __arrival);
+			},
+			getAirports: function (__lat, __lon, __distance) {
+				return _get('airport/nearby?lat=' + __lat + '&lon=' + __lon + '&distance=' + __distance);
+				// http://localhost:9090/further-service/v1/airport/nearby?lat=41.1557&lon=-73.99&distance=100
 			}
 		};
 

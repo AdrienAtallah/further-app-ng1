@@ -8,48 +8,84 @@
  * Controller of the furtherApp
  */
 angular.module('furtherApp')
-	.controller('TopDestinationsCtrl', function($http, api) {
+  .controller('TopDestinationsCtrl', function($http, api, dataService) {
 
 
-		var vm = this;
+    var vm = this;
 
-		vm.topDestinations = [];
-		vm.departureLocation = '';
-		vm.arrivalLocation = '';
-		vm.loadingTopDestinations = false;
+    vm.topDestinations = [];
+    vm.departureLocation = '';
+    vm.arrivalLocation = '';
+    vm.loadingTopDestinations = false;
 
-		vm.airports = ["LAX", "NYC", "CHI"];
-		vm.regions = ["Asia Pacific", "Latin America", "Africa", "Middle East", "North America"];
+    // vm.airports = ["LAX", "NYC", "CHI"];
+    vm.airports = [];
+    vm.regions = ["Asia Pacific", "Latin America", "Africa", "Middle East", "North America"];
 
-		vm.getTopDestinations = function() {
 
-			vm.loadingTopDestinations = true;
+    getAirports();
 
-			api.getTopDestinations(vm.departureLocation, vm.arrivalLocation).then(function mySuccess(response) {
 
-				vm.topDestinations = response.destinations;
+    function getAirports() {
+      console.log("in airporst");
+      var lat = dataService.getLat();
+      var lon = dataService.getLon();
+      var distance = "100";
 
-				vm.topDestinations = vm.topDestinations.filter(function(element) {
-					return (element.destination.cityName !== null);
-				});
+      if (!lat || !lon) {
+        alert("Log in Beech");
+      } else {
 
-				vm.loadingTopDestinations = false;
+        api.getAirports(lat, lon, distance).then(function mySuccess(response) {
 
-			}, function myError(response) {
-				vm.loadingTopDestinations = false;
-				console.log(response.statusText);
-			});
+          // for (var Object in response){
+          //   vm.airports.push(Object.code);
+          //   console.log("Object.code : ", Object);
+          // }
 
-		}
+          response.forEach(function(element){
+            console.log("element: ", element);
+            vm.airports.push(element.code)
+          });
 
-		vm.getFlightToDestinations = function(dest) {
-			console.log('get flight to: ', dest);
-		}
+          console.log("response : ", response);
 
-		vm.isDestinations = function() {
-			if (vm.topDestinations.length > 1)
-				return true;
-			else return false;
-		}
+        }, function myError(response) {
+          vm.loadingTopDestinations = false;
+          console.log(response.statusText);
+        });
+      }
+    }
 
-	});
+    vm.getTopDestinations = function() {
+
+      vm.loadingTopDestinations = true;
+
+      api.getTopDestinations(vm.departureLocation, vm.arrivalLocation).then(function mySuccess(response) {
+
+        vm.topDestinations = response.destinations;
+
+        vm.topDestinations = vm.topDestinations.filter(function(element) {
+          return (element.destination.cityName !== null);
+        });
+
+        vm.loadingTopDestinations = false;
+
+      }, function myError(response) {
+        vm.loadingTopDestinations = false;
+        console.log(response.statusText);
+      });
+
+    }
+
+    vm.getFlightToDestinations = function(dest) {
+      console.log('get flight to: ', dest);
+    }
+
+    vm.isDestinations = function() {
+      if (vm.topDestinations.length > 1)
+        return true;
+      else return false;
+    }
+
+  });
