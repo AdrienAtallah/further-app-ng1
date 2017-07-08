@@ -8,11 +8,12 @@
   function dataService($http, $q) {
 
     var lat = '',
-        lon = '';
+      lon = '',
+      location = {};
 
 
     function _setLat(__lat) {
-      localStorage.setItem('lat', __lat)
+      localStorage.setItem('lat', __lat);
       lat = __lat;
     }
 
@@ -21,14 +22,26 @@
     }
 
     function _setLon(__lon) {
-      localStorage.setItem('lon', __lon)
+      localStorage.setItem('lon', __lon);
       lon = __lon;
     }
 
     function _getLon() {
       return lon;
     }
-    
+
+    function _setLocation(__location) {
+      localStorage.setItem('location', angular.toJson(__location));
+      location = __location;
+    }
+
+    function _getLocation() {
+      if (!location)
+        return angular.fromJson(localStorage.getItem('location'));
+
+      return location;
+    }
+
 
     var publicApi = {
       setLat: function(__lat) {
@@ -42,6 +55,12 @@
       },
       getLon: function() {
         return _getLon();
+      },
+      setLocation: function(__location) {
+        return _setLocation(__location);
+      },
+      getLocation: function() {
+        return _getLocation();
       }
 
     };
