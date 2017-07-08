@@ -19,10 +19,12 @@ angular.module('furtherApp')
 
       vm.currentLocation = response;
       console.log("vm.currentLocation ", vm.currentLocation);
+      dataService.setLocation(vm.currentLocation);
+      
       console.log("vm.currentLocation.city ", vm.currentLocation.city);
       console.log("vm.currentLocation.lat ", vm.currentLocation.lat);
       dataService.setLat(vm.currentLocation.lat);
-      
+
       console.log("vm.currentLocation.lon ", vm.currentLocation.lon);
       dataService.setLon(vm.currentLocation.lon);
 

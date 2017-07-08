@@ -1,10 +1,11 @@
-(function (window) {
+(function(window) {
   window.__env = window.__env || {};
 
-  var ngrokURL = 'http://ea0856a7.ngrok.io/';
+  var baseURL = 'http://localhost:9090/';
+  // var baseURL = 'http://ea0856a7.ngrok.io/';
 
   // API url
-  window.__env.apiUrl = ngrokURL + 'further-service/v1/';
+  window.__env.apiUrl = baseURL + 'further-service/v1/';
 
   // Base url
   window.__env.baseUrl = '/';
